@@ -6,7 +6,7 @@ let quantidade = 1;
 let adicionais = [];
 let valorAdicionais = 0;
 
-let taxaEntrega = 5;
+
 
 
 
@@ -26,9 +26,25 @@ function irParaEtapa2() {
     produtoEscolhido = produto.dataset.nome;
     precoProduto = Number(produto.value);
 
-    
-    quantidade = Number(document.getElementById("quantidade").value);
 
+    if(classico == false){
+        let quantidadeClassico = 0
+    }else{
+        let quantidadeClassico = Number(document.getElementById("quantidadeClassico").value);
+    }
+    if(bacon == false){
+        let quantidadeBacon = 0
+    }else{
+        let quantidadeBacon = Number(document.getElementById("quantidadeBacon").value);
+    }
+    if(frango == false){
+        let quantidadeFrango = 0
+    }else{
+        let quantidadeFrango = Number(document.getElementById("quantidadeFrango").value);
+
+    }
+
+    quantidade = quantidadeClassico + quantidadeBacon + quantidadeFrango;
     
     if (quantidade < 1) {
         alert("Informe uma quantidade válida.");
@@ -93,7 +109,6 @@ function mostrarResumo() {
     
     document.getElementById("resumoProduto").innerText =
         quantidade + "x " + produtoEscolhido;
-
     
     document.getElementById("resumoSubtotal").innerText =
         "R$ " + subtotal.toFixed(2).replace(".", ",");
@@ -172,28 +187,28 @@ function voltarParaEtapa3() {
 }
 
 // desafio 2
-let distancia = Number(
-    document.getElementById("distancia").value
-);
+
+let custo_fixo = 10;
+let taxa_km = 0.2;
 
 function calcularTaxaEntrega(){
-    if(distancia = 0){
+    let distancia = Number(
+    document.getElementById("distancia").value
+);
+    if(distancia == 0){
     document.getElementById("resultadoTaxa").innerText=
     "Informe uma distancia válida";
     return;
     }
-    let taxa;
+    
+    let taxa = custo_fixo + (distancia*taxa_km);
 
-    if(distancia <= 3){
-        taxa = 5;
-    }
-    if(distancia <= 6){
-        taxa = 8;
-    }
-    if(distancia <= 3){
-        taxa = 5;
-    }
-    if(distancia <= 3){
-        taxa = 5;
-    }
+    document.getElementById("resultadoTaxa").innerText =
+    "R$ " + taxa.toFixed(2).replace(".", ",");
+    
+    let tempo = distancia / 3;
+
+    document.getElementById("resultadoTempo").innerText =
+     
+   tempo.toFixed(2).replace(".", ":")+ " Hrs"; 
 }
