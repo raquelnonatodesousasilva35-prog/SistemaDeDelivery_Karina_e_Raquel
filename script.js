@@ -1,7 +1,7 @@
 
 
 let precoProduto = 0;
-let taxaEntrega = 5;
+
 
 let adicionais = [];
 let valorAdicionais = 0;
@@ -132,7 +132,7 @@ function mostrarResumo() {
     });
 
 
-    let total = subtotal + valorAdicionais + taxaEntrega;
+    let total = subtotal + valorAdicionais;
 
 
     document.getElementById("resumoProduto").innerHTML =
@@ -159,8 +159,7 @@ function mostrarResumo() {
         "R$ " + valorAdicionais.toFixed(2).replace(".", ",");
 
 
-    document.getElementById("resumoEntrega").innerText =
-        "R$ " + taxaEntrega.toFixed(2).replace(".", ",");
+   
 
 
     document.getElementById("resumoTotal").innerText =
@@ -180,7 +179,7 @@ function irParaEtapa4() {
 
     });
 
-    let total = subtotal + valorAdicionais + taxaEntrega;   
+    let total = subtotal + valorAdicionais;   
 
     
     document.getElementById("etapa3").style.display = "none";
