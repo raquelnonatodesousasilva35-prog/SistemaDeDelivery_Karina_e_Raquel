@@ -21,6 +21,9 @@ function irParaEtapa2() {
     let classico = document.getElementById("classico");
     let bacon = document.getElementById("bacon");
     let frango = document.getElementById("frango");
+    let coca = document.getElementById("coca");
+    let fanta = document.getElementById("fanta");
+    let suco =document.getElementById("suco");
 
     if (classico.checked) {
 
@@ -71,6 +74,55 @@ function irParaEtapa2() {
         alert("Escolha pelo menos um hambúrguer.");
         return;
     }
+
+    document.getElementById("etapa1").style.display = "none";
+    document.getElementById("etapa2").style.display = "block";
+
+    if (coca.checked) {
+
+        let qtd = Number(
+            document.getElementById("quantidadeCoca").value
+        );
+
+        produtosEscolhidos.push({
+            nome: "Coca Cola",
+            preco: 2,
+            quantidade: qtd
+        });
+
+        quantidade += qtd;
+    }
+
+    if (fanta.checked) {
+
+        let qtd = Number(
+            document.getElementById("quantidadeFanta").value
+        );
+
+        produtosEscolhidos.push({
+            nome: "Fanta",
+            preco: 4,
+            quantidade: qtd
+        });
+
+        quantidade += qtd;
+    }
+
+    if (suco.checked) {
+
+        let qtd = Number(
+            document.getElementById("quantidadeSuco").value
+        );
+
+        produtosEscolhidos.push({
+            nome: "Suco",
+            preco: 3,
+            quantidade: qtd
+        });
+
+        quantidade += qtd;
+    }
+
 
     document.getElementById("etapa1").style.display = "none";
     document.getElementById("etapa2").style.display = "block";
@@ -239,9 +291,39 @@ function calcularTaxaEntrega(){
     document.getElementById("resultadoTaxa").innerText =
     "R$ " + taxa.toFixed(2).replace(".", ",");
     
-    let tempo = distancia / 3;
+    let tempo = 0.3 + (distancia / 3) / 60;
 
     document.getElementById("resultadoTempo").innerText =
      
-   tempo.toFixed(2).replace(".", ":")+ " Hrs"; 
+   tempo.toFixed(2).replace(".", ":"); 
+}
+
+function mostrarMaisSolicitado() {
+
+    let produto = document.getElementById("produtoPesquisa").value;
+
+    if (produto === "") {
+        document.getElementById("resultadoProduto").innerText =
+            "Selecione um produto";
+
+        return;
+    }
+
+
+    if (produto === "hamburguer") {
+        document.getElementById("resultadoProduto").style.display = "block";
+        document.getElementById("resultadoBebidas").style.display = "none";
+    }
+
+    if (produto === "bebida") {
+        document.getElementById("resultadoProduto").style.display = "none";
+        document.getElementById("resultadoBebidas").style.display = "block";
+    }
+
+     if (produto === "adicionais") {
+        document.getElementById("resultadoBebidas").style.display = "none";
+        document.getElementById("resultadoAdicionais").style.display = "block";
+    }
+   
+  
 }
