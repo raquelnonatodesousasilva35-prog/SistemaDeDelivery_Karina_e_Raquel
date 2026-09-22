@@ -1,7 +1,7 @@
 
-let produtoEscolhido = "";
+let produtosEscolhidos = [];
 let precoProduto = 0;
-let quantidade = 1;
+let quantidade = 0;
 
 let adicionais = [];
 let valorAdicionais = 0;
@@ -12,50 +12,51 @@ let valorAdicionais = 0;
 
 
 function irParaEtapa2() {
+    let classico = document.getElementById("classico");
+    let bacon = document.getElementById("bacon");
+    let frango = document.getElementById("frango");
+    if(classico.checked){
+        let qtd = Number(document.getElementById("quantidadeClassico").value);
 
-    
-    let produto = document.querySelector('input[name="produto"]:checked');
+        produtosEscolhidos.push({
+            nome: "Hambúrguer Clássico",
+            preco: 22,
+            quantidade: qtd
+        });
 
-    
-    if (produto == null) {
-        alert("Escolha um produto antes de continuar.");
+        quantidade += qtd;
+    }
+    if(bacon.checked){
+        let qtd = Number(document.getElementById("quantidadeBacon").value);
+
+        produtosEscolhidos.push({
+            nome: "Hambúrguer Bacon",
+            preco: 27,
+            quantidade: qtd
+        });
+
+        quantidade += qtd;
+    }
+    if(frango.checked){
+        let qtd = Number(document.getElementById("quantidadeFranco").value);
+
+        produtosEscolhidos.push({
+            nome: "Hambúrguer Frango",
+            preco: 24,
+            quantidade: qtd
+        });
+
+        quantidade += qtd;
+
+         if (produtosEscolhidos.length === 0) {
+        alert("Escolha pelo menos um hambúrguer.");
         return;
     }
 
-    
-    produtoEscolhido = produto.dataset.nome;
-    precoProduto = Number(produto.value);
-
-
-    if(classico == false){
-        let quantidadeClassico = 0
-    }else{
-        let quantidadeClassico = Number(document.getElementById("quantidadeClassico").value);
-    }
-    if(bacon == false){
-        let quantidadeBacon = 0
-    }else{
-        let quantidadeBacon = Number(document.getElementById("quantidadeBacon").value);
-    }
-    if(frango == false){
-        let quantidadeFrango = 0
-    }else{
-        let quantidadeFrango = Number(document.getElementById("quantidadeFrango").value);
-
-    }
-
-    quantidade = quantidadeClassico + quantidadeBacon + quantidadeFrango;
-    
-    if (quantidade < 1) {
-        alert("Informe uma quantidade válida.");
-        return;
-    }
-
-    
     document.getElementById("etapa1").style.display = "none";
-
-    
     document.getElementById("etapa2").style.display = "block";
+
+    }
 }
 
 
@@ -100,20 +101,32 @@ function irParaEtapa3() {
 
 function mostrarResumo() {
 
-    
-    let subtotal = precoProduto * quantidade;
+    let subtotal = 0;
 
-    
+    let textoProdutos = "";
+
+    produtosEscolhidos.forEach(function(produto) {
+
+        subtotal += produto.preco * produto.quantidade;
+
+        textoProdutos +=
+            produto.quantidade + "x " +
+            produto.nome + "<br>";
+
+    });
+
+
     let total = subtotal + valorAdicionais + taxaEntrega;
 
-    
-    document.getElementById("resumoProduto").innerText =
-        quantidade + "x " + produtoEscolhido;
-    
+
+    document.getElementById("resumoProduto").innerHTML =
+        textoProdutos;
+
+
     document.getElementById("resumoSubtotal").innerText =
         "R$ " + subtotal.toFixed(2).replace(".", ",");
 
-    
+
     if (adicionais.length > 0) {
 
         document.getElementById("resumoAdicionais").innerText =
@@ -125,19 +138,18 @@ function mostrarResumo() {
             "Nenhum adicional";
     }
 
-    
+
     document.getElementById("valorAdicionais").innerText =
         "R$ " + valorAdicionais.toFixed(2).replace(".", ",");
 
-    
+
     document.getElementById("resumoEntrega").innerText =
         "R$ " + taxaEntrega.toFixed(2).replace(".", ",");
 
-    
+
     document.getElementById("resumoTotal").innerText =
         "R$ " + total.toFixed(2).replace(".", ",");
 }
-
 
 
 
