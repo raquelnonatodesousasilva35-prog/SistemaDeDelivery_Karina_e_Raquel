@@ -482,7 +482,17 @@
 
 
                         <!-- ENTREGA -->
-                    
+                    <div class="list-group-item d-flex justify-content-between">
+
+                    <span>
+                        <strong>Taxa de entrega:</strong>
+                    </span>
+
+                    <span id="resumoEntrega">
+                        R$ 5,00
+                    </span>
+
+                </div>
 
 
                         <!-- TOTAL -->
@@ -542,7 +552,7 @@
                 <div class="card-body p-5">
 
                     <h2 class="h3 text-danger mb-4">
-                        Etapa 4 — Pedido finalizado
+                        Pedido finalizado
                     </h2>
 
                     <p class="text-secondary">
@@ -562,15 +572,24 @@
 
                     </div>
 
+                    <div class="d-flex justify-content-between">
 
-                    <button
-                        type="button"
-                        class="btn btn-outline-danger mt-3"
-                        onclick="voltarParaEtapa3()">
+                        <button
+                            type="button"
+                            class="btn btn-outline-secondary"
+                            onclick="voltarParaEtapa3()">
 
-                        Voltar para o resumo
+                            Voltar para o resumo
+                        </button>
 
-                    </button>
+                        <button
+                            type="button"
+                            class="btn btn-danger"
+                            onclick="irParaEtapa4()">
+                            <a href="desafio2.html" class="btn btn-danger">Continuar</a>
+                        </button>
+
+                    </div>
 
                 </div>
 

@@ -1,7 +1,7 @@
 
-let produtosEscolhidos = [];
+
 let precoProduto = 0;
-let quantidade = 0;
+let taxaEntrega = 5;
 
 let adicionais = [];
 let valorAdicionais = 0;
@@ -12,11 +12,21 @@ let valorAdicionais = 0;
 
 
 function irParaEtapa2() {
+
+    
+
+    produtosEscolhidos = [];
+    quantidade = 0;
+
     let classico = document.getElementById("classico");
     let bacon = document.getElementById("bacon");
     let frango = document.getElementById("frango");
-    if(classico.checked){
-        let qtd = Number(document.getElementById("quantidadeClassico").value);
+
+    if (classico.checked) {
+
+        let qtd = Number(
+            document.getElementById("quantidadeClassico").value
+        );
 
         produtosEscolhidos.push({
             nome: "Hambúrguer Clássico",
@@ -26,8 +36,12 @@ function irParaEtapa2() {
 
         quantidade += qtd;
     }
-    if(bacon.checked){
-        let qtd = Number(document.getElementById("quantidadeBacon").value);
+
+    if (bacon.checked) {
+
+        let qtd = Number(
+            document.getElementById("quantidadeBacon").value
+        );
 
         produtosEscolhidos.push({
             nome: "Hambúrguer Bacon",
@@ -37,8 +51,12 @@ function irParaEtapa2() {
 
         quantidade += qtd;
     }
-    if(frango.checked){
-        let qtd = Number(document.getElementById("quantidadeFranco").value);
+
+    if (frango.checked) {
+
+        let qtd = Number(
+            document.getElementById("quantidadeFrango").value
+        );
 
         produtosEscolhidos.push({
             nome: "Hambúrguer Frango",
@@ -47,18 +65,16 @@ function irParaEtapa2() {
         });
 
         quantidade += qtd;
+    }
 
-         if (produtosEscolhidos.length === 0) {
+    if (produtosEscolhidos.length === 0) {
         alert("Escolha pelo menos um hambúrguer.");
         return;
     }
 
     document.getElementById("etapa1").style.display = "none";
     document.getElementById("etapa2").style.display = "block";
-
-    }
 }
-
 
 
 
@@ -156,9 +172,15 @@ function mostrarResumo() {
 function irParaEtapa4() {
 
     
-    let subtotal = precoProduto * quantidade;
+    let subtotal = 0;
 
-    let total = subtotal + valorAdicionais + taxaEntrega;
+    produtosEscolhidos.forEach(function(produto) {
+
+        subtotal += produto.preco * produto.quantidade;
+
+    });
+
+    let total = subtotal + valorAdicionais + taxaEntrega;   
 
     
     document.getElementById("etapa3").style.display = "none";
