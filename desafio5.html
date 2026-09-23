@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ranking de Entregadores - Portal Delivery</title>
   
-  <!-- Bootstrap 5 CSS CDN -->
+  <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   
-  <!-- Bootstrap Icons CDN -->
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   
-  <!-- Google Font: Poppins -->
+ 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   
@@ -20,33 +20,41 @@
 
   <!-- Cabeçalho / Navbar Bootstrap -->
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger shadow-sm">
-      <div class="container">
-        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold fs-4" href="#">
-          <i class="bi bi-box-seam-fill"></i> Portal Delivery
-        </a>
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Alternar navegação">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+   
+    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
 
-        <div class="collapse navbar-collapse" id="navbarContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-medium">
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="bi bi-house-door me-1"></i> Início</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="bi bi-bag-check me-1"></i> Produtos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-trophy me-1"></i> Ranking de Entregadores</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="bi bi-envelope me-1"></i> Contato</a>
-            </li>
-          </ul>
+        <div class="container">
+
+            <a class="navbar-brand fw-bold" href="index.html">Portal Delivery</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Início</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="desafio1.html">Faça o seu pedido</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="desafio2.html">Taxas de entrega</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="desafio4.html">Produtos mais solicitados</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="desafio5.html">Ranking de entregas</a></li>
+
+                </ul>
+
+            </div>
+
         </div>
-      </div>
+
     </nav>
+
   </header>
 
   <!-- Conteúdo Principal -->
@@ -55,7 +63,7 @@
       
       <!-- Cabeçalho do Ranking -->
       <div class="text-center mb-5">
-        <h1 class="fw-bold display-6 text-dark mb-2">🏆 Ranking de Entregadores do Mês</h1>
+        <h1 class="fw-bold display-6 text-dark mb-2"> Ranking de Entregadores do Mês</h1>
         <div class="d-inline-flex align-items-center gap-2 bg-danger-subtle text-danger px-3 py-1 rounded-pill fw-semibold border border-danger-subtle">
           <i class="bi bi-calendar-event"></i> Mês Atual - Setembro/2026
         </div>
@@ -69,7 +77,7 @@
         <div class="col-12 col-md-4 order-2 order-md-1">
           <div class="card podium-card podium-2nd shadow-sm rounded-4 text-center p-3">
             <div class="card-body">
-              <div class="medal-icon mb-2" title="2º Lugar">🥈</div>
+              <div class="medal-icon mb-2" title="2º Lugar"></div>
               <div class="avatar-lg avatar-circle bg-secondary text-white mx-auto mb-3 shadow-sm">
                 CE
               </div>
@@ -97,7 +105,7 @@
               <i class="bi bi-award-fill me-1"></i> Campeão do Mês
             </span>
             <div class="card-body pt-2">
-              <div class="medal-icon mb-2" title="1º Lugar">🥇</div>
+              <div class="medal-icon mb-2" title="1º Lugar"></div>
               <div class="avatar-lg avatar-circle bg-warning text-dark mx-auto mb-3 shadow">
                 MV
               </div>
@@ -122,7 +130,7 @@
         <div class="col-12 col-md-4 order-3 order-md-3">
           <div class="card podium-card podium-3rd shadow-sm rounded-4 text-center p-3">
             <div class="card-body">
-              <div class="medal-icon mb-2" title="3º Lugar">🥉</div>
+              <div class="medal-icon mb-2" title="3º Lugar"></div>
               <div class="avatar-lg avatar-circle bg-danger-subtle text-danger mx-auto mb-3 shadow-sm">
                 JC
               </div>
@@ -371,13 +379,42 @@
   </main>
 
   <!-- Rodapé Colado no Fundo -->
-  <footer class="bg-dark text-white text-center py-3 mt-auto border-top border-secondary-subtle">
-    <div class="container">
-      <p class="mb-0 small text-light opacity-75">
-        &copy; 2026 - Portal Delivery | Prática de Desenvolvimento Web
-      </p>
+ <footer class="bg-dark text-white mt-5">
+
+    <div class="container py-4">
+
+        <div class="row text-center text-md-start">
+
+            <div class="col-md-4 mb-3">
+                <h5>Portal Delivery</h5>
+                <p class="mb-0">
+                    Seu pedido rápido, prático e do seu jeito.
+                </p>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <h5>Atendimento</h5>
+                <p class="mb-1">Segunda a Domingo</p>
+                <p class="mb-0">11h às 23h</p>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <h5>Desenvolvido por</h5>
+                <p class="mb-1">Raquel Nonato de Sousa Silva</p>
+                <p class="mb-0">Karina da Silva Moura</p>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <p class="text-center mb-0">
+            &copy; 2026 Portal Delivery - Todos os direitos reservados.
+        </p>
+
     </div>
-  </footer>
+
+</footer>
 
   <!-- Bootstrap 5 JS Bundle CDN (com Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

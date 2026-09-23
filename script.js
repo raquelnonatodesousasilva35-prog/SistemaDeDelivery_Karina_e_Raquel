@@ -75,8 +75,7 @@ function irParaEtapa2() {
         return;
     }
 
-    document.getElementById("etapa1").style.display = "none";
-    document.getElementById("etapa2").style.display = "block";
+   
 
     if (coca.checked) {
 
@@ -296,6 +295,17 @@ function calcularTaxaEntrega(){
     document.getElementById("resultadoTempo").innerText =
      
    tempo.toFixed(2).replace(".", ":"); 
+
+   if(tempo >= 0.6){
+     document.getElementById("resultadoTempo").innerText =
+     
+   tempo.toFixed(2).replace(".", ":")+"Hrs"; 
+   }
+   if(tempo < 0.6){
+     document.getElementById("resultadoTempo").innerText =
+     
+   tempo.toFixed(2).replace(".", ":")+"Mints"; 
+   }
 }
 
 function mostrarMaisSolicitado() {
@@ -309,21 +319,70 @@ function mostrarMaisSolicitado() {
         return;
     }
 
+if (produto === "hamburguer") {
 
-    if (produto === "hamburguer") {
         document.getElementById("resultadoProduto").style.display = "block";
         document.getElementById("resultadoBebidas").style.display = "none";
+        document.getElementById("resultadoAdicionais").style.display = "none";
     }
 
     if (produto === "bebida") {
+
         document.getElementById("resultadoProduto").style.display = "none";
         document.getElementById("resultadoBebidas").style.display = "block";
+        document.getElementById("resultadoAdicionais").style.display = "none";
     }
 
-     if (produto === "adicionais") {
+    if (produto === "adicionais") {
+
+        document.getElementById("resultadoProduto").style.display = "none";
         document.getElementById("resultadoBebidas").style.display = "none";
         document.getElementById("resultadoAdicionais").style.display = "block";
     }
    
   
 }
+
+//desafio 4
+// Dados de exemplo (pode substituir por dados da sua base de dados ou API)
+const dadosEntregas = [
+  { nome: "Hambúrguer Artesanal", totalEntregas: 142 },
+  { nome: "Combo Pizza Família", totalEntregas: 98 },
+  { nome: "Batata Frita Suprema", totalEntregas: 210 },
+  { nome: "Marmita Fitness Frango", totalEntregas: 65 },
+  { nome: "Refrigerante 2L", totalEntregas: 180 }
+];
+
+function gerarRanking() {
+  const container = document.getElementById('rankingList');
+  container.innerHTML = '';
+
+  // 1. Ordena a lista de forma decrescente (do maior número para o menor)
+  const rankingOrdenado = [...dadosEntregas].sort((a, b) => b.totalEntregas - a.totalEntregas);
+
+  // 2. Cria os elementos HTML para cada item do ranking
+  rankingOrdenado.forEach((item, index) => {
+    const posicao = index + 1;
+    const itemElement = document.createElement('div');
+    
+    // Adiciona classe de destaque para o Top 3
+    let classeDestaque = '';
+    if (posicao === 1) classeDestaque = 'rank-1';
+    else if (posicao === 2) classeDestaque = 'rank-2';
+    else if (posicao === 3) classeDestaque = 'rank-3';
+
+    itemElement.className = `ranking-item ${classeDestaque}`;
+    itemElement.innerHTML = `
+      <span class="rank-position">#${posicao}</span>
+      <div class="rank-info">
+        <span class="rank-name">${item.nome}</span>
+      </div>
+      <span class="rank-count">${item.totalEntregas} entregas</span>
+    `;
+
+    container.appendChild(itemElement);
+  });
+}
+
+// Executa a função ao carregar a página
+document.addEventListener('DOMContentLoaded', gerarRanking);
